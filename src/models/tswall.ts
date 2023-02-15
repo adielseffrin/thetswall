@@ -1,6 +1,9 @@
 import { BallColor } from "../enums/ball-color";
 import { RowType } from "../enums/row-type";
+import { QuizApiService } from "../services/quiz.service";
 import { Ball } from "./ball";
+import { Question } from "./quizApi/question";
+import { QuestionInterface } from "./quizApi/question.interface";
 import { Row } from "./row";
 
 export class TsWall{
@@ -24,6 +27,9 @@ export class TsWall{
     private _clearButton = document.querySelector('#clearButton') as HTMLButtonElement;
     private _allButton = document.querySelector('#allButton') as HTMLButtonElement;
     private _changeValuesButton = document.querySelector('#changeValuesButton') as HTMLButtonElement;
+    private _getQuestionButton = document.querySelector('#getQuestionButton') as HTMLButtonElement;
+
+    private _quizService : QuizApiService;
 
     constructor(){
         this.rowTypes.push(...[RowType.odd,RowType.odd,RowType.even,RowType.odd,RowType.even,RowType.odd,RowType.even,RowType.odd,RowType.even,RowType.odd,RowType.even,RowType.odd,RowType.even,RowType.odd,RowType.even,RowType.odd,RowType.odd]);
@@ -32,6 +38,8 @@ export class TsWall{
         this.aggregateTotal = 0;
         this.isAnswerCorrect = false;
         this.board = new Array<Row>();
+        this._quizService = new QuizApiService();
+
         this._setButtonsActions();
         this.setGame();
     }
@@ -97,6 +105,17 @@ export class TsWall{
                 this.board[b.currentRow].squares[b.currentCol].isFree = true;
                 let currentSquare = document.querySelector(`div[id="${b.currentRow}_${b.currentCol}"]`) as HTMLElement;
                 currentSquare.removeChild(b.myImage);
+            })
+        })
+
+        this._getQuestionButton.addEventListener('click', async () => {
+            await this._quizService.getQuestion()
+            .then(r => {
+                if(Boolean(r)){
+                    let questionResponses = (r as unknown) as Array<QuestionInterface>;
+                    let question = new Question(questionResponses[0] as QuestionInterface);
+
+                }
             })
         })
     }
