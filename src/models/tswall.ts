@@ -20,6 +20,8 @@ export class TsWall{
     public isAnswerCorrect: boolean;
     public aggregateTotal : number;
 
+    public question : Question | null = null;
+
     /* Buttons */
     private _playButton = document.querySelector('#playButton') as HTMLButtonElement;
     private _prepareButton = document.querySelector('#prepareButton') as HTMLButtonElement;
@@ -58,6 +60,7 @@ export class TsWall{
     private _setButtonsActions(){
         
         this._playButton.addEventListener('click', () => {
+            this.question?.hideQuestionBox();
             this.play();
         })
         
@@ -80,6 +83,9 @@ export class TsWall{
             if(canStart){
                 this._evaluateButton.disabled = false;
                 this._prepareButton.disabled = true;
+                if(this.question != null){
+                    this.question.showQuestion();
+                }
             }
         })
         
@@ -113,7 +119,8 @@ export class TsWall{
             .then(r => {
                 if(Boolean(r)){
                     let questionResponses = (r as unknown) as Array<QuestionInterface>;
-                    let question = new Question(questionResponses[0] as QuestionInterface);
+                    this.question = new Question(questionResponses[0] as QuestionInterface);
+                    this.question.showPossibleAnswers();
 
                 }
             })
@@ -134,10 +141,12 @@ export class TsWall{
     }
 
     public evaluateAnswers():void{
-        const answerInputElement = document.querySelector('input[name="correct-answer"]:checked') as HTMLInputElement | null;
-        if(answerInputElement != null){
-            this.isAnswerCorrect = answerInputElement.value == 'correct';
-        }
+
+        const selectedAnswer = Number(document.querySelector("input[name='possible-answers']:checked")?.id.split('-')[1]);
+        let correctAsnwerId = this.question?.getCorrectAsnwerId();
+        this.isAnswerCorrect = selectedAnswer == correctAsnwerId;
+        this.question?.highLigthCorrectAnswer();
+
         if(this.isAnswerCorrect){
             this.ballColor = BallColor.green;
         }else{
@@ -190,4 +199,5 @@ export class TsWall{
         })
         return positions;
     }
+    //TODO check  Alpinejs
 }

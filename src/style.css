@@ -49,3 +49,28 @@
 .total-points{
   margin-top: 15px;
 }
+
+.container{
+  width: fit-content;
+  position: relative;
+}
+
+.question-box{
+  position: absolute;
+  width: 300px;
+  height: 125px;
+  background-color: #c8ebeb;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 10px;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.highlighted > label {
+  background: yellow;
+  font-weight: bolder;
+}
