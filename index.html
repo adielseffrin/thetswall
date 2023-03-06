@@ -9,6 +9,28 @@
   </head>
   <body>
     <div id="app">
+		<div class="info">
+			<div class="rounds">
+				<div class="round-1 correct"></div>
+				<div class="round-2 correct"></div>
+				<div class="round-3 incorrect"></div>
+				<div class="round-4 ongoing"></div>
+				<div class="round-5"></div>
+				<div class="round-6"></div>
+				<div class="round-7"></div>
+				<div class="round-8"></div>
+				<div class="round-9"></div>
+				<div class="round-10"></div>
+			</div>
+			<div class="points">
+				<div class="round-points">
+						Pontuação da rodada: <span>0</span>
+				</div>
+				<div class="total-points">
+						Pontuação da total: <span>0</span>
+				</div>
+			</div>
+		</div>
 			<div class="container">
 					<div class="row odd" id="row_0">
 							<div class="col hide" id="0_0"></div>
@@ -368,25 +390,18 @@
 					</div>
 			</div>
 			<div class="actions">
-					<button id="prepareButton" >Preparar</button>
-					<button id="evaluateButton" disabled>Conferir</button>
-					<button id="playButton" disabled>Jogar</button>
-					<button id="clearButton">Limpar</button>
-					<button id="changeValuesButton">Mudar valores</button>
-					<button id="getQuestionButton">Nova Pergunta</button>
+				<button id="getQuestionButton">Mostrar Alternativas</button>
+				<button id="prepareButton" disabled>Mostrar pergunta</button>
+				<button id="evaluateButton" disabled>Conferir</button>
+				<button id="playButton" disabled>Jogar</button>
+				<!-- <button id="clearButton">Limpar</button> -->
+				<button id="changeValuesButton">Mudar valores</button>
 			</div>
 			<!-- <div class="correct-answer-selection">
 					<input type="radio" id="correct_answer" name="correct-answer" value="correct" checked/>Correct
 					<input type="radio" id="incorrect_answer" name="correct-answer" value="incorrect"/>Incorrect
 			</div> -->
-			<div class="points">
-					<div class="round-points">
-							Pontuação da rodada: <span></span>
-					</div>
-					<div class="total-points">
-							Pontuação da total: <span></span>
-					</div>
-			</div>
+			
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

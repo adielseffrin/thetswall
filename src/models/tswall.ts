@@ -95,36 +95,42 @@ export class TsWall{
             this._playButton.disabled = false;
         })
         
-        this._clearButton.addEventListener('click', () => {
-            this._playButton.disabled = true;
-            this._prepareButton.disabled = false;
-            
-            let multipleSelection = document.querySelectorAll('input[name="multiple_squares"]:checked');
-            if(multipleSelection != null){
-                multipleSelection.forEach(e => {
-                    let el = e as HTMLInputElement;
-                    el.checked = false;
-                })
-            }
-        
-            this.ballsInGame.forEach(b => {
-                this.board[b.currentRow].squares[b.currentCol].isFree = true;
-                let currentSquare = document.querySelector(`div[id="${b.currentRow}_${b.currentCol}"]`) as HTMLElement;
-                currentSquare.removeChild(b.myImage);
-            })
-        })
+        // this._clearButton.addEventListener('click', () => {
+        //     this.clearBoard();
+        // })
 
         this._getQuestionButton.addEventListener('click', async () => {
+            this._prepareButton.disabled = false;
+            this._getQuestionButton.disabled = true;
+            this.clearBoard();
+            this.getQuestion();
+        })
+    }
+
+    private async getQuestion():Promise<void>{
+        try{
+            await this.getQuestion2()
+            .then(() => this.question?.showPossibleAnswers())
+        }catch(err){
+            this.getQuestion();
+        }
+        
+    }
+
+    private async getQuestion2():Promise<void>{
             await this._quizService.getQuestion()
             .then(r => {
                 if(Boolean(r)){
                     let questionResponses = (r as unknown) as Array<QuestionInterface>;
                     this.question = new Question(questionResponses[0] as QuestionInterface);
-                    this.question.showPossibleAnswers();
-
+                    if(!this.question.isQuestionValid()){
+                        throw new Error('invalidQuestion');
+                    }
                 }
             })
-        })
+            .catch(err => {
+                console.log(err)    
+            })
     }
 
     public setStart():boolean{
@@ -155,12 +161,14 @@ export class TsWall{
         this.ballsInGame.forEach(b => {
             b.changeBallColor(this.ballColor);
         })
+        this._playButton.disabled = false;
     }
 
     public play():void{
         const totalTime = (this.rowTypes.length + this.ballsInGame.length-1) * 250;
         this.ballsInGame.forEach(b => b.makeTrace());
         this.ballsInGame.sort(() => Math.floor(Math.random()*100)-Math.floor(Math.random()*100) );
+        this._playButton.disabled = true;
 
         for(let i = 0; i < this.ballsInGame.length; ++i){
             setTimeout(() => this.ballsInGame[i].paintTrace(),300*i);
@@ -188,6 +196,7 @@ export class TsWall{
             if(totalPointsElement != null){
                 totalPointsElement.innerHTML = this.aggregateTotal.toString();
             }
+            this._getQuestionButton.disabled = false;
 
         },totalTime);
     }
@@ -198,6 +207,25 @@ export class TsWall{
             positions.push(b.getFinalPosition())
         })
         return positions;
+    }
+
+    private clearBoard(){
+        this._playButton.disabled = true;
+        this._prepareButton.disabled = false;
+        
+        let multipleSelection = document.querySelectorAll('input[name="multiple_squares"]:checked');
+        if(multipleSelection != null){
+            multipleSelection.forEach(e => {
+                let el = e as HTMLInputElement;
+                el.checked = false;
+            })
+        }
+    
+        this.ballsInGame.forEach(b => {
+            this.board[b.currentRow].squares[b.currentCol].isFree = true;
+            let currentSquare = document.querySelector(`div[id="${b.currentRow}_${b.currentCol}"]`) as HTMLElement;
+            currentSquare.removeChild(b.myImage);
+        })
     }
     //TODO check  Alpinejs
 }

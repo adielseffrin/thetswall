@@ -85,6 +85,9 @@ export class Question implements QuestionInterface{
 	hideQuestionBox(){
 		this._questionBox?.classList.add('hidden');
 	}
+	isQuestionValid(){
+		return this.answersArray && this.answersArray?.filter(x => x.isCorrect).length > 0;
+	}
 
     
 }

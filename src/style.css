@@ -1,3 +1,8 @@
+body{
+  display: flex;
+  justify-content: center;
+}
+
 .row{
   display: flex;
   margin-bottom: 1px;
@@ -12,7 +17,7 @@
   width: 30px;
   margin-left: 1px;
   margin-right: 1px;
-  background-color: bisque;
+  background-color: #4b89d6;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +33,7 @@
   text-orientation: upright;
   font-size: small;
   letter-spacing: -3px;
+  color: white;
 }
 
 .last-row > .col{
@@ -47,7 +53,7 @@
 }
 
 .total-points{
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 .container{
@@ -58,12 +64,17 @@
 .question-box{
   position: absolute;
   width: 300px;
-  height: 125px;
-  background-color: #c8ebeb;
+  background-color: #021154;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 10px;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+}
+
+.question-area{
+  margin-bottom: 2%;
 }
 
 .hidden{
@@ -73,4 +84,56 @@
 .highlighted > label {
   background: yellow;
   font-weight: bolder;
+}
+
+.info{
+  border: 1px solid #021154;
+  border-radius: 15px;
+  /* height: 25px; */
+}
+div.rounds{
+  padding: 0 1%;
+}
+
+div.rounds > div[class^='round-']{
+  height: 2px;
+  width: 10%;
+  display: block;
+  position: relative;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  border-top: unset;
+  border-right: unset;
+}
+
+div.rounds > div[class^='round-']:first-of-type{
+  border-left: unset;
+}
+
+div.rounds > div[class^='round-'].correct{
+  background-color: green;
+}
+
+div.rounds > div[class^='round-'].incorrect{
+  background-color: red;
+}
+
+div.rounds > div[class^='round-'].ongoing{
+  background-color: gold;
+}
+
+
+.rounds{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.points{
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
 }
