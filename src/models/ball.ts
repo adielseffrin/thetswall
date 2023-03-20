@@ -134,6 +134,13 @@ export class Ball{
             console.log(this.currentCol)
         }
     }
+
+    eraseBall(){
+        if(this.currentRow != null && this.currentCol != null){
+            this._board[this.currentRow].squares[this.currentCol].isFree = true;
+            document.getElementById(`${this.currentRow}_${this.currentCol}`)?.removeChild(this.myImage); 
+        }  
+    }
     
     isSquareFree(row: number, col:number):boolean{
         return this._board[row].squares[col].isFree;

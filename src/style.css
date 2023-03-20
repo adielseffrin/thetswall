@@ -89,13 +89,14 @@ body{
 .info{
   border: 1px solid #021154;
   border-radius: 15px;
+  margin-bottom: 5px;
   /* height: 25px; */
 }
 div.rounds{
   padding: 0 1%;
 }
 
-div.rounds > div[class^='round-']{
+div.rounds > div[id^='round-']{
   height: 2px;
   width: 10%;
   display: block;
@@ -107,19 +108,19 @@ div.rounds > div[class^='round-']{
   border-right: unset;
 }
 
-div.rounds > div[class^='round-']:first-of-type{
+div.rounds > div[id^='round-']:first-of-type{
   border-left: unset;
 }
 
-div.rounds > div[class^='round-'].correct{
+div.rounds > div[id^='round-'].correct{
   background-color: green;
 }
 
-div.rounds > div[class^='round-'].incorrect{
+div.rounds > div[id^='round-'].incorrect{
   background-color: red;
 }
 
-div.rounds > div[class^='round-'].ongoing{
+div.rounds > div[id^='round-'].ongoing{
   background-color: gold;
 }
 

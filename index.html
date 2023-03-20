@@ -11,18 +11,19 @@
     <div id="app">
 		<div class="info">
 			<div class="rounds">
-				<div class="round-1 correct"></div>
-				<div class="round-2 correct"></div>
-				<div class="round-3 incorrect"></div>
-				<div class="round-4 ongoing"></div>
-				<div class="round-5"></div>
-				<div class="round-6"></div>
-				<div class="round-7"></div>
-				<div class="round-8"></div>
-				<div class="round-9"></div>
-				<div class="round-10"></div>
+				<div id="round-1"></div>
+				<div id="round-2"></div>
+				<div id="round-3"></div>
+				<div id="round-4"></div>
+				<div id="round-5"></div>
+				<div id="round-6"></div>
+				<div id="round-7"></div>
+				<div id="round-8"></div>
+				<div id="round-9"></div>
+				<div id="round-10"></div>
 			</div>
 			<div class="points">
+				<div class="round_counter">Rodada: <span>0</span></div>
 				<div class="round-points">
 						Pontuação da rodada: <span>0</span>
 				</div>
@@ -37,25 +38,25 @@
 							<div class="col hide" id="0_1"></div>
 							<div class="col hide" id="0_2"></div>
 							<div class="col hide" id="0_3"></div>
-							<div class="col" id="0_4">
+							<div class="col clickable-element" id="0_4">
 									<span class="label">1</span>
 							</div>
-							<div class="col" id="0_5">
+							<div class="col clickable-element" id="0_5">
 									<span class="label">2</span>
 							</div>
-							<div class="col" id="0_6">
+							<div class="col clickable-element" id="0_6">
 									<span class="label">3</span>
 							</div>
-							<div class="col" id="0_7">
+							<div class="col clickable-element" id="0_7">
 									<span class="label">4</span>
 							</div>
-							<div class="col" id="0_8">
+							<div class="col clickable-element" id="0_8">
 									<span class="label">5</span>
 							</div>
-							<div class="col" id="0_9">
+							<div class="col clickable-element" id="0_9">
 									<span class="label">6</span>
 							</div>
-							<div class="col" id="0_10">
+							<div class="col clickable-element" id="0_10">
 									<span class="label">7</span>
 							</div>
 							<div class="col hide" id="0_11"></div>
@@ -377,31 +378,30 @@
 						<div class="answers-area"></div>
 					</div>
 			</div>
-			<div class="initial_selection">
+			<div class="initial_selection" style="display: none;">
 					<div class="multiple">
-							<input type="checkbox" id="square_1" name="multiple_squares" value="1"/>1
-							<input type="checkbox" id="square_2" name="multiple_squares" value="2"/>2
-							<input type="checkbox" id="square_3" name="multiple_squares" value="3"/>3
-							<input type="checkbox" id="square_4" name="multiple_squares" value="4"/>4
-							<input type="checkbox" id="square_5" name="multiple_squares" value="5"/>5
-							<input type="checkbox" id="square_6" name="multiple_squares" value="6"/>6
-							<input type="checkbox" id="square_7" name="multiple_squares" value="7"/>7
-							<button id="allButton">Todos</button>
+							<input type="checkbox" id="square_1" name="multiple_squares" value="1" disabled/>1
+							<input type="checkbox" id="square_2" name="multiple_squares" value="2" disabled/>2
+							<input type="checkbox" id="square_3" name="multiple_squares" value="3" disabled/>3
+							<input type="checkbox" id="square_4" name="multiple_squares" value="4" disabled/>4
+							<input type="checkbox" id="square_5" name="multiple_squares" value="5" disabled/>5
+							<input type="checkbox" id="square_6" name="multiple_squares" value="6" disabled/>6
+							<input type="checkbox" id="square_7" name="multiple_squares" value="7" disabled/>7
+							<!-- <button id="allButton">Todos</button> -->
 					</div>
 			</div>
 			<div class="actions">
-				<button id="getQuestionButton">Mostrar Alternativas</button>
-				<button id="prepareButton" disabled>Mostrar pergunta</button>
-				<button id="evaluateButton" disabled>Conferir</button>
-				<button id="playButton" disabled>Jogar</button>
+				<!-- <button id="playButton" disabled>Jogar</button> -->
 				<!-- <button id="clearButton">Limpar</button> -->
-				<button id="changeValuesButton">Mudar valores</button>
+				<!-- <button id="changeValuesButton">Mudar valores</button> -->
+				<br>
+				<button id="newRoundButton">Nova rodada</button>
+				<button id="showAlternativesButton" disabled="disabled">Mostrar Alternativas</button>
+				<button id="showQuestionButton" disabled="disabled">Mostrar pergunta</button>
+				<button id="setBallPositionButton" disabled="disabled">Colocar bolas no muro</button>
+				<button id="evaluateButton" disabled="disabled">Conferir</button>
+				<button id="playButton" disabled="disabled">Jogar</button>
 			</div>
-			<!-- <div class="correct-answer-selection">
-					<input type="radio" id="correct_answer" name="correct-answer" value="correct" checked/>Correct
-					<input type="radio" id="incorrect_answer" name="correct-answer" value="incorrect"/>Incorrect
-			</div> -->
-			
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
