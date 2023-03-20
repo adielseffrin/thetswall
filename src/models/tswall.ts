@@ -189,7 +189,7 @@ export class TsWall{
             this.clearBoard()
         }
         this.currentRoundConfig = this.rounds.getRound(this.roundNumber);
-        let element = document.querySelector('.round_counter span');
+        let element = document.querySelector('.round-counter span.value');
         if(element){
             element.innerHTML = this.roundNumber.toString();
         }
@@ -409,8 +409,8 @@ export class TsWall{
             }
             
             this.aggregateTotal = Math.max(this.aggregateTotal + total,0);
-            let roundPointsElement = document.querySelector('.round-points span');
-            let totalPointsElement = document.querySelector('.total-points span');
+            let roundPointsElement = document.querySelector('.round-points span.value');
+            let totalPointsElement = document.querySelector('.total-points span.value');
 
             if(roundPointsElement != null){
                 roundPointsElement.innerHTML = total.toString();

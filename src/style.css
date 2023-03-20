@@ -9,12 +9,12 @@ body{
 }
 
 .row.odd {
-  padding-left: 15px;
+  padding-left: 0.5rem;
 }
 
 .col{
-  height: 30px;
-  width: 30px;
+  height: 1em;
+  width: 1em;
   margin-left: 1px;
   margin-right: 1px;
   background-color: #4b89d6;
@@ -37,7 +37,7 @@ body{
 }
 
 .last-row > .col{
-  height: 75px;
+  height: 3em;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -63,12 +63,12 @@ body{
 
 .question-box{
   position: absolute;
-  width: 300px;
+  width: 12em;
   background-color: #021154;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border-radius: 15px;
+  border-radius: 1em;
   padding: 2%;
   color: white;
 }
@@ -88,7 +88,7 @@ body{
 
 .info{
   border: 1px solid #021154;
-  border-radius: 15px;
+  border-radius: 1em;
   margin-bottom: 5px;
   /* height: 25px; */
 }
@@ -137,4 +137,30 @@ div.rounds > div[id^='round-'].ongoing{
   justify-content: space-evenly;
   align-items: center;
   
+}
+
+img.ball {
+  width: 1rem;
+  height: 1rem;
+}
+
+.round-counter > span:not(.value)::after,
+.round-points > span:not(.value)::after,
+.total-points > span:not(.value)::after{
+  content: ':'
+}
+
+@media screen and (max-width:415px) {
+  .round-counter,
+  .round-points,
+  .total-points{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .round-counter > span:not(.value)::after,
+  .round-points > span:not(.value)::after,
+  .total-points > span:not(.value)::after{
+    content: ''
+  }
 }

@@ -28,6 +28,7 @@ export class Ball{
         this.setStart(initialCol);
         this.changeBallColor(ballColor);
         this.trace.push([0,initialCol]);
+        this.myImage.classList.add('ball');
     }
 
     changeBallColor(ballColor: string){
