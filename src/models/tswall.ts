@@ -141,12 +141,12 @@ export class TsWall{
     }
 
     private setRounds(){
-        // this.rounds.addRound({externalRoundNumber: 1, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
-        // this.rounds.addRound({externalRoundNumber: 2, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
-        // this.rounds.addRound({externalRoundNumber: 3, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
-        // this.rounds.addRound({externalRoundNumber: 4, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
+        this.rounds.addRound({externalRoundNumber: 1, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
+        this.rounds.addRound({externalRoundNumber: 2, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
+        this.rounds.addRound({externalRoundNumber: 3, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
+        this.rounds.addRound({externalRoundNumber: 4, ballPositions: [1,4,7], ballMultiplier:2, roundDificulty: RoundDificulty.easy});
         
-        // this.rounds.addRound({ballMultiplier:1, roundDificulty: RoundDificulty.medium, hasQuestion: false, ballColor: BallColor.green, ballPositions: [1,2,3,4,5,6,7]});
+        this.rounds.addRound({ballMultiplier:1, roundDificulty: RoundDificulty.medium, hasQuestion: false, ballColor: BallColor.green, ballPositions: [1,2,3,4,5,6,7]});
                 
         this.rounds.addRound({externalRoundNumber: 5, roundDificulty: RoundDificulty.medium, hasQuestion: true, ballMultiplier: 1});
         this.rounds.addRound({externalRoundNumber: 6, roundDificulty: RoundDificulty.medium, hasQuestion: true, ballMultiplier: 2});
